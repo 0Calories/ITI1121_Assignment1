@@ -211,14 +211,17 @@ public class MontyHall
      * </pre>
      * @param args ignored for now
      */
-    public static void main(String[] args)
+    public static void main(String[] args, int gamesToPlay)
     {
 
         MontyHall montyHall;
 
         StudentInfo.display();
         montyHall = new MontyHall();
-        montyHall.oneGame();
+        for (int i = 0; i < gamesToPlay; i ++)
+        {
+            montyHall.oneGame();
+        }
     }
 
 }

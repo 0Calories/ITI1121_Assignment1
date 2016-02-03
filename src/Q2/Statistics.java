@@ -21,21 +21,22 @@ package Q2;
 public class Statistics
 {
 
-    int gamesPlayed;
-    int switchSuccess;
-    int switchFail;
+    private int gamesPlayed;
+    private int switchSuccess;
+    private int switchFail;
 
-    int doorAPrize;
-    int doorBPrize;
-    int doorCPrize;
+    private int doorAPrize;
+    private int doorBPrize;
+    private int doorCPrize;
 
-    int doorAChosen;
-    int doorBChosen;
-    int doorCChosen;
+    private int doorAChosen;
+    private int doorBChosen;
+    private int doorCChosen;
 
-    int doorAOpened;
-    int doorBOpened;
-    int doorCOpened;
+    private int doorAOpened;
+    private int doorBOpened;
+    private int doorCOpened;
+
 
 
     /**
@@ -69,7 +70,11 @@ public class Statistics
      */
     public void updateStatistics(Door door1, Door door2, Door door3)
     {
-// REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
+        //Add 1 to the games played counter, and update the stats for each door by calling the oneDoor method
+        gamesPlayed += 1;
+        oneDoor(door1, 1);
+        oneDoor(door2, 2);
+        oneDoor(door3, 3);
 
     }
 
@@ -80,7 +85,77 @@ public class Statistics
      */
     private void oneDoor(Door door, int index)
     {
-        // REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
+        if (index == 1)
+        {
+            if (door.isChosen())
+            {
+                doorAChosen += 1;
+                if (door.hasPrize())
+                {
+                    switchFail += 1; //Since this door has the prize, if the player switched doors, they would lose.
+                }
+                else
+                {
+                    switchSuccess += 1; //Since this door does not have the prize, the player would win if they switched.
+                }
+            }
+            if (door.hasPrize())
+            {
+                doorAPrize += 1;
+            }
+            if (door.isOpen())
+            {
+                doorAOpened += 1;
+            }
+        }
+
+        if (index == 2)
+        {
+            if (door.isChosen())
+            {
+                doorBChosen += 1;
+                if (door.hasPrize())
+                {
+                    switchFail += 1; //Since this door has the prize, if the player switched doors, they would lose.
+                }
+                else
+                {
+                    switchSuccess += 1; //Since this door does not have the prize, the player would win if they switched.
+                }
+            }
+            if (door.hasPrize())
+            {
+                doorBPrize += 1;
+            }
+            if (door.isOpen())
+            {
+                doorBOpened += 1;
+            }
+        }
+
+        if (index == 3)
+        {
+            if (door.isChosen())
+            {
+                doorCChosen += 1;
+                if (door.hasPrize())
+                {
+                    switchFail += 1; //Since this door has the prize, if the player switched doors, they would lose.
+                }
+                else
+                {
+                    switchSuccess += 1; //Since this door does not have the prize, the player would win if they switched.
+                }
+            }
+            if (door.hasPrize())
+            {
+                doorCPrize += 1;
+            }
+            if (door.isOpen())
+            {
+                doorCOpened += 1;
+            }
+        }
 
     }
 
@@ -89,7 +164,9 @@ public class Statistics
      */
     public String toString()
     {
-        // REPLACE THE BODY OF THIS METHOD WITH YOUR OWN IMPLEMENTATION
+        return "lol" + doorAChosen;
+
+
 
     }
 
