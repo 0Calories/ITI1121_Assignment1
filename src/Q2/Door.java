@@ -1,4 +1,4 @@
-package assignment1;
+package Q2;
 
 /**
  * Created by Ash on 2/1/2016.

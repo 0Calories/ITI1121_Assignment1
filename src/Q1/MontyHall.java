@@ -1,4 +1,4 @@
-package assignment1;
+package Q1;
 import java.util.Random;
 
 /**
@@ -131,43 +131,9 @@ public class MontyHall
      *   @return the door opened
      */
 
-    //************************DEBUG THIS!****************
+
     private Door openOtherDoor(Door prizeDoor, Door selectedDoor)
     {
-        //System.out.println(((d2 == prizeDoor && d3 == selectedDoor) || (d3 == prizeDoor && d2 == selectedDoor)));
-        //System.out.println(((d3 == prizeDoor && d1 == selectedDoor) || (d1 == prizeDoor && d3 == selectedDoor)));
-        //System.out.println(((d1 == prizeDoor && d2 == selectedDoor) || (d2 == prizeDoor && d1 == selectedDoor)));
-
-        /*
-        System.out.println(d2 == prizeDoor);
-        System.out.println(d3 == selectedDoor);
-
-        System.out.println();
-
-        System.out.println(d3 == prizeDoor);
-        System.out.println(d2 == selectedDoor);
-
-        System.out.println();
-
-        System.out.println(d3 == prizeDoor);
-        System.out.println(d1 == selectedDoor);
-
-        System.out.println();
-
-        System.out.println(d1 == prizeDoor);
-        System.out.println(d3 == selectedDoor);
-
-        System.out.println();
-
-        System.out.println(d1 == prizeDoor);
-        System.out.println(d2 == selectedDoor);
-
-        System.out.println();
-
-        System.out.println(d2 == prizeDoor);
-        System.out.println(d1 == selectedDoor);
-
-        */
 
         if ((d2 == prizeDoor && d3 == selectedDoor) || (d3 == prizeDoor && d2 == selectedDoor))
         {
