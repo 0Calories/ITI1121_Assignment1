@@ -1,8 +1,4 @@
-package Q2;
-
-/**
- * Created by Ash on 2/2/2016.
- */
+package Q3;
 
 /**
  * Contains a method <code>void display()</code> that all the <code>main</code> methods

@@ -29,6 +29,13 @@ public class StudentInfo {
         System.out.println("*                                                          *");
         System.out.println("************************************************************");
         System.out.println();
+        System.out.println("************************************************************");
+        System.out.println("*                    Thomas L'Anglais                      *");
+        System.out.println("*                         8298567                          *");
+        System.out.println("*                        Section C                         *");
+        System.out.println("*                                                          *");
+        System.out.println("************************************************************");
+        System.out.println();
 
     }
 
