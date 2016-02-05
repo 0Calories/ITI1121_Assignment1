@@ -1,4 +1,4 @@
-package Q2;
+package Q3;
 
 import java.text.DecimalFormat;
 
@@ -184,6 +184,25 @@ public class Statistics
                 "   door 2: " + doorBOpened + " (" + df.format(((float)(doorBOpened) / ((float)(doorAOpened + doorBOpened + doorCOpened)) * 100)) + "%)\n" +
                 "   door 3: " + doorCOpened + " (" + df.format(((float)(doorCOpened) / ((float)(doorAOpened + doorBOpened + doorCOpened)) * 100)) + "%)\n";
 
+
+
+    }
+
+    /**
+     *  @return Returns the complete statistics information in CSV format
+     */
+    public String toCSV()
+    {
+
+        return "Number of games," + gamesPlayed + "\n" +
+                "Number of doors,3\n" +
+                ",Win,Loss\n" +
+                "Switching strategy," + switchSuccess + "," + switchFail + "\n" +
+                "Staying strategy," + switchFail + "," + switchSuccess + "\n" +
+                ",Selected doors,Winning doors,Open doors\n" +
+                "Door1," + doorAChosen + "," + doorAPrize + "," + doorAOpened + "\n" +
+                "Door2," + doorBChosen + "," + doorBPrize + "," + doorBOpened + "\n" +
+                "Door3," + doorCChosen + "," + doorCPrize + "," + doorCOpened + "\n";
 
 
     }

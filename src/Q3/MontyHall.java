@@ -1,5 +1,10 @@
-package Q1;
+package Q3;
+
+import javax.swing.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
+
 
 /**
  * The class <b>MontyHall</b> simulates one game. Is uses three <b>Door</b> objects
@@ -16,9 +21,11 @@ import java.util.Random;
 public class MontyHall
 {
 
-    Door d1;
-    Door d2;
-    Door d3;
+    private Door d1;
+    private Door d2;
+    private Door d3;
+
+    Statistics stats;
 
     /**
      * Initializes the three doors.
@@ -28,6 +35,7 @@ public class MontyHall
         d1 = new Door("Door A");
         d2 = new Door("Door B");
         d3 = new Door("Door C");
+        stats = new Statistics();
     }
 
     /**
@@ -67,36 +75,24 @@ public class MontyHall
             prizeD = d3;
         }
 
+        //Simulate the player picking a door
         Door chosenDoor = pickADoor();
-        System.out.println("The prize was behind " + prizeD.getName());
-        System.out.println("The player chose " + chosenDoor.getName());
 
+        //Simulate the host opening a door
         Door openDoor = openOtherDoor(prizeD, chosenDoor);
         openDoor.open();
-        System.out.println("The host opened " + openDoor.getName());
 
-        //This block of if statements determines what is the proper choice for the host by finding which door hasn't been
-        //chosen by the player and doesn't contain the prize
-
-
-        if(chosenDoor.hasPrize())
-        {
-            System.out.println("Switching strategy would have lost");
-        }
-        else
-        {
-            System.out.println("Switching strategy would have won");
-        }
-
+        //Update the statistics at the end of the game
+        stats.updateStatistics(d1, d2, d3);
     }
 
     /**
      * Simulates a random selection of one of the three doors.
      * @return the door randomly selected
      */
-    //WORKING!
     private Door pickADoor()
     {
+        //Generate a random number between 1 to 3, the number generated determines the choice of the player
         Random rand = new Random();
         int playerChoice = rand.nextInt(3) + 1;
 
@@ -131,6 +127,8 @@ public class MontyHall
 
     private Door openOtherDoor(Door prizeDoor, Door selectedDoor)
     {
+        //This block of if statements determines which door to open, as long as the door isn't chosen by the player, and it
+        //doesn't contain the prize.
 
         if ((d2 == prizeDoor && d3 == selectedDoor) || (d3 == prizeDoor && d2 == selectedDoor))
         {
@@ -185,7 +183,6 @@ public class MontyHall
         }
 
         return null;
-
     }
 
     /**
@@ -211,10 +208,45 @@ public class MontyHall
     {
 
         MontyHall montyHall;
+        montyHall = new MontyHall();
+        Statistics stats = new Statistics();
 
         StudentInfo.display();
-        montyHall = new MontyHall();
-        montyHall.oneGame();
+        int gamesToPlay = 0;
+
+        //If no runtime arguments are detected, prompt the user, else use the given value as the number of games to be played
+        if (args.length == 0)
+        {
+            gamesToPlay = Integer.parseInt(JOptionPane.showInputDialog("Please input the number of games to be played.", gamesToPlay));
+        }
+        else
+        {
+            gamesToPlay = Integer.parseInt(args[0]);
+        }
+
+        //Play as many games as the user requested
+        for (int i = 0; i < gamesToPlay; i++)
+        {
+            montyHall.oneGame();
+        }
+
+        //Display the stats at the end of all games, and display a dialogbox containing the same stats
+        System.out.println(stats);
+        JOptionPane.showMessageDialog(null, stats.toString());
+
+        try
+        {
+            FileWriter chart = new FileWriter("C:\\Users\\Ash\\Desktop\\output.csv");
+            chart.append(stats.toCSV());
+
+            chart.flush();
+            chart.close();
+
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }
