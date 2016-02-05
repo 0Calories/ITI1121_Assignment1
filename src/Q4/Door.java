@@ -1,4 +1,4 @@
-package Q3;
+package Q4;
 
 /**
  * The class <b>Door</b> stores the information about one of the door:

@@ -1,5 +1,7 @@
 package Q3;
 
+import java.text.DecimalFormat;
+
 /**
  * The class  <b>Statistics</b> accumulates information about a series of games:
  * <ol>
@@ -17,21 +19,21 @@ package Q3;
 public class Statistics
 {
 
-    private int gamesPlayed;
-    private int switchSuccess;
-    private int switchFail;
+    private static int gamesPlayed;
+    private static int switchSuccess;
+    private static int switchFail;
 
-    private int doorAPrize;
-    private int doorBPrize;
-    private int doorCPrize;
+    private static int doorAPrize;
+    private static int doorBPrize;
+    private static int doorCPrize;
 
-    private int doorAChosen;
-    private int doorBChosen;
-    private int doorCChosen;
+    private static int doorAChosen;
+    private static int doorBChosen;
+    private static int doorCChosen;
 
-    private int doorAOpened;
-    private int doorBOpened;
-    private int doorCOpened;
+    private static int doorAOpened;
+    private static int doorBOpened;
+    private static int doorCOpened;
 
 
 
@@ -55,6 +57,8 @@ public class Statistics
         doorAOpened = 0;
         doorBOpened = 0;
         doorCOpened = 0;
+
+
 
     }
 
@@ -81,6 +85,7 @@ public class Statistics
      */
     private void oneDoor(Door door, int index)
     {
+        //Determine which variables to update, based on the given index of the door, and determine whether switching would have failed or succeeded.
         if (index == 1)
         {
             if (door.isChosen())
@@ -155,27 +160,51 @@ public class Statistics
 
     }
 
+
     /**
      *  @return Returns the complete statistics information
      */
     public String toString()
     {
-        return "lol" + doorAChosen;
+        DecimalFormat df = new DecimalFormat("#");
+
+        return "Number of games played: " + gamesPlayed + "\n" +
+                "Staying strategy won " + switchFail + " games " + " (" + df.format(((float)(switchFail) / ((float)(switchFail + switchSuccess)) * 100)) + "%)\n" +
+                "Switching strategy won " + switchSuccess + " games " + " (" + df.format(((float)(switchSuccess) / ((float)(switchFail + switchSuccess)) * 100)) + "%)\n" +
+                "Selected doors:\n" +
+                "   door 1: " + doorAChosen + " (" + df.format(((float)(doorAChosen) / ((float)(doorAChosen + doorBChosen + doorCChosen)) * 100)) + "%)\n" +
+                "   door 2: " + doorBChosen + " (" + df.format(((float)(doorBChosen) / ((float)(doorAChosen + doorBChosen + doorCChosen)) * 100)) + "%)\n" +
+                "   door 3: " + doorCChosen + " (" + df.format(((float)(doorCChosen) / ((float)(doorAChosen + doorBChosen + doorCChosen)) * 100)) + "%)\n" +
+                "Winning doors:\n" +
+                "   door 1: " + doorAPrize + " (" + df.format(((float)(doorAPrize) / ((float)(doorAPrize + doorBPrize + doorCPrize)) * 100)) + "%)\n" +
+                "   door 2: " + doorBPrize + " (" + df.format(((float)(doorBPrize) / ((float)(doorAPrize + doorBPrize + doorCPrize)) * 100)) + "%)\n" +
+                "   door 3: " + doorCPrize + " (" + df.format(((float)(doorCPrize) / ((float)(doorAPrize + doorBPrize + doorCPrize)) * 100)) + "%)\n" +
+                "Open doors:\n" +
+                "   door 1: " + doorAOpened + " (" + df.format(((float)(doorAOpened) / ((float)(doorAOpened + doorBOpened + doorCOpened)) * 100)) + "%)\n" +
+                "   door 2: " + doorBOpened + " (" + df.format(((float)(doorBOpened) / ((float)(doorAOpened + doorBOpened + doorCOpened)) * 100)) + "%)\n" +
+                "   door 3: " + doorCOpened + " (" + df.format(((float)(doorCOpened) / ((float)(doorAOpened + doorBOpened + doorCOpened)) * 100)) + "%)\n";
 
 
 
     }
 
-    public String toCSV() {
-        return "Number of games ,"+gamesPlayed+
-                "\nNumber of doors, 3"+
-                "\n,Win,Loss"+
-                "\nStaying strategy ,"+switchFail+", "+switchSuccess+
-                "\nSwitching strategy, "+switchSuccess+", "+switchFail+
-                "\n, Selected doors, Winning doors, Open doors" +
-                "\nDoor 1, "+doorAChosen+", "+doorAPrize+", "+doorAOpened+
-                "\nDoor 2, "+doorBChosen+", "+doorBPrize+", "+doorBOpened+
-                "\nDoor 3, "+doorCChosen+", "+doorCPrize+", "+doorCOpened;
+    /**
+     *  @return Returns the complete statistics information in CSV format
+     */
+    public String toCSV()
+    {
+
+        return "Number of games," + gamesPlayed + "\n" +
+                "Number of doors,3\n" +
+                ",Win,Loss\n" +
+                "Switching strategy," + switchSuccess + "," + switchFail + "\n" +
+                "Staying strategy," + switchFail + "," + switchSuccess + "\n" +
+                ",Selected doors,Winning doors,Open doors\n" +
+                "Door1," + doorAChosen + "," + doorAPrize + "," + doorAOpened + "\n" +
+                "Door2," + doorBChosen + "," + doorBPrize + "," + doorBOpened + "\n" +
+                "Door3," + doorCChosen + "," + doorCPrize + "," + doorCOpened + "\n";
+
+
     }
 
 }

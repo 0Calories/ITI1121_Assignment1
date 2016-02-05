@@ -1,8 +1,5 @@
 package Q1;
 
-/**
- * Created by Ash on 2/1/2016.
- */
 
 /**
  * The class <b>Door</b> stores the information about one of the door:

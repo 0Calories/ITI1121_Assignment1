@@ -1,10 +1,6 @@
 package Q2;
 
 /**
- * Created by Ash on 2/2/2016.
- */
-
-/**
  * Contains a method <code>void display()</code> that all the <code>main</code> methods
  * call to display the student information. Fill the box with your personal
  * information.
