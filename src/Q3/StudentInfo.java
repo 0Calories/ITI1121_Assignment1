@@ -1,5 +1,4 @@
-package Q1;
-
+package Q3;
 
 /**
  * Contains a method <code>void display()</code> that all the <code>main</code> methods
@@ -27,13 +26,12 @@ public class StudentInfo {
         System.out.println("************************************************************");
         System.out.println();
         System.out.println("************************************************************");
-        System.out.println("*                    Thomas L'Anglais                      *");
+        System.out.println("*                     Thomas L'Anglais                     *");
         System.out.println("*                         8298567                          *");
         System.out.println("*                        Section C                         *");
         System.out.println("*                                                          *");
         System.out.println("************************************************************");
         System.out.println();
-
     }
 
 }
